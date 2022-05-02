@@ -15,5 +15,8 @@ def upload_screenshot(request):
         if not request.FILES:
             print("files not exist")
             return
-        print(request.FILES)
+        ss = Screenshot()
+        ss.image = request.FILES.values()
+        # print('ss.image: ' + str(ss.image))
+        ss.save()
     return Response(status=200)
