@@ -6,6 +6,6 @@ from django.db import models
 class Screenshot(models.Model):
     datetime = models.DateField(auto_now=True)
     image = models.ImageField(upload_to='images/')
-
-    def __str__(self):
-        return self.datetime
+    #
+    # def __str__(self):
+    #     return self.datetime
