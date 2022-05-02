@@ -3,7 +3,6 @@ from .models import Screenshot
 
 from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here.
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -20,8 +19,6 @@ def upload_screenshot(request):
         for value in image_dict.getlist('files'):
             ss = Screenshot()
             ss.image = value
-            # print(value)
-            # print('ss.image: ' + ss.image)
             ss.save()
     return Response(data={
         'message': 'Success',
