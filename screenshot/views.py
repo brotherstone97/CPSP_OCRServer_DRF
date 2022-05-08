@@ -20,6 +20,4 @@ def upload_screenshot(request):
             ss = Screenshot()
             ss.image = value
             ss.save()
-    return Response(data={
-        'message': 'Success',
-    })
+    return Response(status=204)
