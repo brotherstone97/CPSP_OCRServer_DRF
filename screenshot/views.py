@@ -9,15 +9,22 @@ from rest_framework.decorators import api_view
 
 @api_view(['POST'])
 @csrf_exempt
+#스크린샷 업로드 기능을 수행하는 함수
 def upload_screenshot(request):
     if request.method == 'POST':
         if not request.FILES:
             print("files not exist")
             return
         image_dict = request.FILES
-        print(image_dict)
         for value in image_dict.getlist('files'):
-            ss = Screenshot()
-            ss.image = value
-            ss.save()
+            # 확장자 제한(png, jpg, jpeg)
+            if '.png' in str(value) or '.jpg' in str(value) or '.jpeg' in str(value):
+                print(value)
+                ss = Screenshot()
+                ss.image = value
+                ss.save()
+            else:
+                print("value's type: ", type(str(value)))
+                print("value: ", value)
+                print("this file isn't contain png | jpg | jpeg")
     return Response(status=204)
