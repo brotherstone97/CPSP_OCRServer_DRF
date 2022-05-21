@@ -26,6 +26,8 @@ def upload_screenshot(request):
                     ss = Screenshot()
                     ss.image = value
                     ss.save()
+                    #reducing quality
+
                 else:
                     print("value's type: ", type(str(value)))
                     print("value: ", value)
