@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .image_preprocessing import reduce_size
 
 
 @api_view(['POST'])
@@ -25,9 +26,11 @@ def upload_screenshot(request):
                     print(value)
                     ss = Screenshot()
                     ss.image = value
+                    #image/temp에 임시저장
                     ss.save()
-                    #reducing quality
-
+                    #reducing size
+                    #temp내 이미지 optimizing 후 상위폴더에 이미지 재저장
+                    reduce_size('images/temp/', 'images/', filename=value)
                 else:
                     print("value's type: ", type(str(value)))
                     print("value: ", value)
