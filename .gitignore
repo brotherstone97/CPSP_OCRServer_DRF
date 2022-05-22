@@ -1,6 +1,5 @@
 ./venv
-./db.sqlite3
-./.idea/
+.idea/
 ./screenshot/__pycache__
 tester.py
 
@@ -11,3 +10,6 @@ __pycache__/
 local_settings.py
 db.sqlite3-journal
 
+images
+
+db.sqlite3
