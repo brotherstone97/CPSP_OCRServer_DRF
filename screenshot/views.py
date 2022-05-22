@@ -5,8 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .image_preprocessing import reduce_size
 import os
+
+from .image_preprocessing import reduce_size
+from .handle_file_system import dir_size
 
 @api_view(['POST'])
 @csrf_exempt
@@ -14,9 +16,9 @@ import os
 def upload_screenshot(request):
     if request.method == 'POST':
         #images폴더의 용량 제한을 1GB로 설정함.
-        if os.path.getsize('images/')>=1073741824:
-            print('images folder is fulled.')
-            return
+        if dir_size('images') >= 1024:
+            print("images directory size is fulled.")
+            return Response(status=413)
         #request의 FILES가 존재하지 않는 경우 return
         if not request.FILES:
             print("files not exist")

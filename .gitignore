@@ -2,7 +2,7 @@
 ./db.sqlite3
 ./.idea/
 ./screenshot/__pycache__
-
+tester.py
 
 *.log
 *.pot
