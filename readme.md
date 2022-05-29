@@ -31,7 +31,7 @@ case | response
 성공|204: No Contents
 업로드 이미지 용량초과(50MB) | 413: Payload Too Large
 images폴더 용량 초과(1GB) | 413: Payload Too Large
-Request에 파일이 생략된 경우 | 400: Gone
+Request에 파일이 생략된 경우 | 400: Bad Request
 
 ## Deployment
 python3 manage.py runserver:```PORT```
