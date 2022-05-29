@@ -32,3 +32,8 @@ case | response
 업로드 이미지 용량초과(50MB) | 413: Payload Too Large
 images폴더 용량 초과(1GB) | 413: Payload Too Large
 Request에 파일이 생략된 경우 | 400: Gone
+
+## Deployment
+python3 manage.py runserver:```PORT```
+
+example: python manage.py runserver:8080
