@@ -26,7 +26,7 @@ file| image file(Required)
 
 ### Responses
 
-case | response
+case | response code
 ---|---|
 성공|204: No Contents
 업로드 이미지 용량초과(50MB) | 413: Payload Too Large
