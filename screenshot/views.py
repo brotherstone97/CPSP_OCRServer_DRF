@@ -26,7 +26,7 @@ def upload_screenshot(request):
         # request의 FILES가 존재하지 않는 경우 return
         if not request.FILES:
             print("files not exist")
-            return Response(status=415)
+            return Response(status=400)
         #전송받은 file
         image_dict = request.FILES
         #전송 시 key값은 'file'이어야함
