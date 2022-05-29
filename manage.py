@@ -6,6 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
+
+    # runserver시 이미지 폴더 유무에 따라 폴더 생성
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+        os.mkdir('images/temp')
+
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CPSP_DRF.settings')
     try:
         from django.core.management import execute_from_command_line
