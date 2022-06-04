@@ -46,6 +46,8 @@ def upload_screenshot(request):
                 # reducing size
                 # temp내 이미지 optimizing 후 상위폴더에 이미지 재저장
                 reduce_size('images/temp/', 'images/', filename=file)
+                #모델에 저장된 record 삭제(모델을 이미지 파일 저장용도로 사용하고 db로 사용하지 않기 위함)
+                ss.delete()
             else:
                 print("value's type: ", type(str(file)))
                 print("value: ", file)
