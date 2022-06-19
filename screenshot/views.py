@@ -52,6 +52,7 @@ def upload_screenshot(request):
                 print("value's type: ", type(str(file)))
                 print("value: ", file)
                 print("this file isn't contain png | jpg | jpeg")
+                return Response(status==400)
         else:
             print("50mb 초과")
             return Response(status=413)
