@@ -11,7 +11,7 @@ from .image_preprocessing import reduce_size
 from .handle_file_system import dir_size
 
 # images폴더의 용량 제한을 1GB로 설정함.
-LIMIT_IMAGE_FOLDER = 1024
+LIMIT_IMAGE_FOLDER = 1024 ** 3
 
 
 @api_view(['POST'])
