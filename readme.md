@@ -3,6 +3,7 @@
 + Django 4.0.4
 + Django REST Framework 3.13.1
 + Pillow 9.1.0
++ django-cors-headers 3.13.0
 
 ## 주의사항
 + 최초 실행 전 ```python3 manage.py migrate``` 명령어 입력이 필요합니다.
