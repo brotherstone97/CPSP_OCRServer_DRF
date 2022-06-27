@@ -10,4 +10,4 @@ def dir_size(path):
             if entry.is_file():
                 total_size += entry.stat().st_size  # st_size == file_size
     # total_size를  MB단위로 반환
-    return total_size / (1024 * 1024)
+    return total_size
