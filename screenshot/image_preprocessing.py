@@ -1,7 +1,7 @@
 # PIL
 from PIL import Image
 import os
-from datetime import datetime
+from django.utils import timezone
 
 
 def reduce_size(temp_path, new_path, filename):
@@ -34,7 +34,7 @@ def reduce_size(temp_path, new_path, filename):
 #저장된 시간이 적힌 새 이름으로 바꾸기 위한 함수
 def get_new_filename(old_filename, extra_str=''):
     # 현재 시각
-    datetime_now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    datetime_now = timezone.now().strftime("%Y-%m-%d-%H-%M-%S")
     # .이 나오는 위치
     index_of_dot = old_filename.index('.')
     # 확장자 추출
