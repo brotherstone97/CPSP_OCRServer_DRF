@@ -27,9 +27,9 @@ def upload_screenshot(request):
         if not request.FILES:
             print("files not exist")
             return Response(status=400)
-        #전송받은 file
+        # 전송받은 file
         image_dict = request.FILES
-        #전송 시 key값은 'file'이어야함
+        # 전송 시 key값은 'file'이어야함
         file = image_dict.get('file')
         print(f'value.size: {file.size / (50 * 1024 * 1024)}mb')
         # 50mb이하의 파일로 제한
@@ -46,7 +46,7 @@ def upload_screenshot(request):
                 # reducing size
                 # temp내 이미지 optimizing 후 상위폴더에 이미지 재저장
                 reduce_size('images/temp/', 'images/', filename=file)
-                #모델에 저장된 record 삭제(모델을 이미지 파일 저장용도로 사용하고 db로 사용하지 않기 위함)
+                # 모델에 저장된 record 삭제(모델을 이미지 파일 저장용도로 사용하고 db로 사용하지 않기 위함)
                 ss.delete()
             else:
                 print("value's type: ", type(str(file)))
@@ -57,3 +57,14 @@ def upload_screenshot(request):
             print("50mb 초과")
             return Response(status=413)
     return Response(status=204)
+
+
+@api_view(['GET'])
+@csrf_exempt
+def get_screenshot(request):
+    images_dir = 'images/'
+    images = os.listdir(images_dir)
+
+    images.remove('temp')
+
+    return Response(status=200, data=images)
