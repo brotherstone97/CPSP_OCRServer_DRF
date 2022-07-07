@@ -18,6 +18,7 @@
 method | URL
 ---|---
 POST | [BaseURL]/screenshot/
+GET | [BaseURL]/screenshot/files
 
 ### Parameter
 
