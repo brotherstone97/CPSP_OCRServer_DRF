@@ -5,7 +5,7 @@ from django.db import models
 
 class Screenshot(models.Model):
     datetime = models.DateTimeField(auto_now=True)
-    #전처리전 임시폴더에 저장
+    #전처리 전 임시폴더에 저장
     image = models.ImageField(upload_to='images/temp')
     #
     # def __str__(self):

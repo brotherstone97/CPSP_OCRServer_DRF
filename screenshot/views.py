@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Screenshot
 
@@ -68,3 +69,11 @@ def get_screenshot(request):
     images.remove('temp')
 
     return Response(status=200, data=images)
+
+#저장된 이미지 접근하는 함수
+@api_view(['GET'])
+@csrf_exempt
+def get_static_images(request):
+    file_name = request.GET['name']
+    with open(f'images/{file_name}', 'rb') as f:
+        return HttpResponse(f.read(), content_type='image/jpeg')
