@@ -17,7 +17,7 @@ from .handle_file_system import dir_size
 LIMIT_IMAGE_FOLDER = 1024 ** 3
 
 
-class Screenshot(APIView):
+class ScreenshotAPI(APIView):
     # 스크린샷 업로드 기능을 수행하는 함수
     def post(self, request):
         # images폴더의 용량 제한을 1GB로 설정함.
