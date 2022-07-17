@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.views import APIView
+
 from .models import Screenshot
 
 from django.views.decorators.csrf import csrf_exempt
@@ -15,11 +17,9 @@ from .handle_file_system import dir_size
 LIMIT_IMAGE_FOLDER = 1024 ** 3
 
 
-@api_view(['POST'])
-@csrf_exempt
-# 스크린샷 업로드 기능을 수행하는 함수
-def upload_screenshot(request):
-    if request.method == 'POST':
+class Screenshot(APIView):
+    # 스크린샷 업로드 기능을 수행하는 함수
+    def post(self, request):
         # images폴더의 용량 제한을 1GB로 설정함.
         if dir_size('media/images') >= LIMIT_IMAGE_FOLDER:
             print("images directory size is fulled.")
@@ -57,23 +57,22 @@ def upload_screenshot(request):
         else:
             print("50mb 초과")
             return Response(status=413)
-    return Response(status=204)
+        return Response(status=204)
+
+    def get(self, request):
+        images_dir = 'media/images/'
+        images = os.listdir(images_dir)
+
+        images.remove('temp')
+
+        return Response(status=200, data=images)
 
 
+# 저장된 이미지 접근하는 함수
 @api_view(['GET'])
 @csrf_exempt
-def get_screenshot(request):
-    images_dir = 'images/'
-    images = os.listdir(images_dir)
-
-    images.remove('temp')
-
-    return Response(status=200, data=images)
-
-#저장된 이미지 접근하는 함수
-@api_view(['GET'])
-@csrf_exempt
-def get_static_images(request):
-    file_name = request.GET['name']
-    with open(f'images/{file_name}', 'rb') as f:
+def get_static_images(request, name):
+    # query param
+    # file_name = request.GET['name']
+    with open(f'media/images/{name}', 'rb') as f:
         return HttpResponse(f.read(), content_type='image/jpeg')
