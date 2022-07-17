@@ -72,6 +72,9 @@ class ScreenshotAPI(APIView):
 @api_view(['GET'])
 @csrf_exempt
 def get_static_images(request, name):
+    #내부 파일 접근을 막기위한 금지문자열 설정
+    if '/' in name or '..' in name:
+        return Response(status=400)
     # query param
     # file_name = request.GET['name']
     with open(f'media/images/{name}', 'rb') as f:
