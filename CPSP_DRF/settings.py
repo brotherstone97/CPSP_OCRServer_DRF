@@ -134,10 +134,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# # Screenshot root
-# SCREENSHOT_ROOT = os.path.join(BASE_DIR, 'images')
-#
-# SCREENSHOT_URL = '/upload'
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/screenshot/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

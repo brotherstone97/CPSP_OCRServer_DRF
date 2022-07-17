@@ -31,7 +31,8 @@ def reduce_size(temp_path, new_path, filename):
             os.remove(temp_file)
             break
 
-#저장된 시간이 적힌 새 이름으로 바꾸기 위한 함수
+
+# 저장된 시간이 적힌 새 이름으로 바꾸기 위한 함수
 def get_new_filename(old_filename, extra_str=''):
     # 현재 시각
     datetime_now = timezone.now().strftime("%Y-%m-%d-%H-%M-%S")
@@ -41,5 +42,5 @@ def get_new_filename(old_filename, extra_str=''):
     file_extension = old_filename[index_of_dot:]
     new_filename = datetime_now + extra_str + file_extension
 
-    #파일명 예) 2022-06-28-00-00-00.jpg
+    # 파일명 예) 2022-06-28-00-00-00.jpg
     return new_filename

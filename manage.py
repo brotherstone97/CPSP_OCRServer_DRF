@@ -8,9 +8,10 @@ def main():
     """Run administrative tasks."""
 
     # runserver시 이미지 폴더 유무에 따라 폴더 생성
-    if not os.path.isdir('images'):
-        os.mkdir('images')
-        os.mkdir('images/temp')
+    if not os.path.isdir('media'):
+        os.mkdir('media')
+        os.mkdir('media/images')
+        os.mkdir('media/images/temp')
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CPSP_DRF.settings')
     try:

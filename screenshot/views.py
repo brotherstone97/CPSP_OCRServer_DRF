@@ -21,7 +21,7 @@ LIMIT_IMAGE_FOLDER = 1024 ** 3
 def upload_screenshot(request):
     if request.method == 'POST':
         # images폴더의 용량 제한을 1GB로 설정함.
-        if dir_size('images') >= LIMIT_IMAGE_FOLDER:
+        if dir_size('media/images') >= LIMIT_IMAGE_FOLDER:
             print("images directory size is fulled.")
             return Response(status=413)
         # request의 FILES가 존재하지 않는 경우 return
@@ -46,7 +46,7 @@ def upload_screenshot(request):
                 ss.save()
                 # reducing size
                 # temp내 이미지 optimizing 후 상위폴더에 이미지 재저장
-                reduce_size('images/temp/', 'images/', filename=file)
+                reduce_size('media/images/temp/', 'media/images/', filename=file)
                 # 모델에 저장된 record 삭제(모델을 이미지 파일 저장용도로 사용하고 db로 사용하지 않기 위함)
                 ss.delete()
             else:
